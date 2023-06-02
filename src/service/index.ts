@@ -29,9 +29,11 @@ export type ISongListTypeResponse = {
   categories: { 0: string; 1: string; 2: string; 3: string; 4: string };
 };
 
-export const getSongListType = () =>
-  <AxiosPromise<ISongListTypeResponse>>request.get('/playlist/catlist');
-// request.get('/playlist/catlist') as AxiosPromise<ISongListTypeResponse>;
+export const getSongListType = (): AxiosPromise<ISongListTypeResponse> =>
+  request.get('/playlist/catlist')
+// 断言的两种语法 <>在前断言 和 as在后断言
+// <AxiosPromise<ISongListTypeResponse>>request.get('/playlist/catlist')
+// request.get('/playlist/catlist') as AxiosPromise<ISongListTypeResponse>
 
 interface IGetTopPlaylistParams {
   order?: 'new' | 'hot';
